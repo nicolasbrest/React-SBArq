@@ -1,12 +1,34 @@
-import React from "react";
-import product from "../data/product";
+import React, { useEffect, useState } from "react";
+import productD from "../data/product";
+import ItemList from "./ItemList";
+
+
+function getProducts(){
+
+    return new Promise ((resolve, reject) => {
+        setTimeout( () => {
+            resolve (productD);
+        }, 2000 );
+    });
+}
 
 function ItemListContainer ({ titulo }) {
-    console.log (product);
+
+    const [productState, setProduct] = useState ([]);
+    
+    useEffect( () => {
+        getProducts().then(respuestaPromise =>{
+            setProduct(respuestaPromise);
+        });
+    }, []);
+
+
+
     return(
-        <div class="container px-5 py-8 mx-auto">
-            <div class="flex flex-col text-center w-full mb-12">
-                <h1 class="sm:text-3x1 text-2x1 font-lighter title-font mb-4 text-red-500"><p>{ titulo }</p></h1>
+        <div className="container px-5 py-8 mx-auto">
+            <div className="flex flex-col text-center w-full mb-12">
+                <h1 className="sm:text-3x1 text-2x1 font-lighter title-font mb-4"><p>{ titulo }</p></h1>
+                <ItemList product={productState}/>
             </div>
         </div>
     )
