@@ -1,14 +1,15 @@
 import React from 'react';
-import product from "../data/product";
+import ItemCount from './ItemCount';
 
-function Item ( {product} ) {
+
+const ItemDetail = ( {product} ) => {
     return (      
         <div className="xl:w-1/3 md:w-1/2 p-4">
             <div className="shadow-lg bg-gray-100 p-6 rounded-lg">
                 <div>
                     <img
                         alt={product.title}
-                        className="image object-contain bg-placeholder h-60 rounded w-full object-center mb-6"
+                        className="image object-contain bg-placeholder h-10 rounded w-small object-center mb-2"
                         src={product.image}
                     />
                 </div>
@@ -18,11 +19,10 @@ function Item ( {product} ) {
                     <span className="title-font font-medium text-1x1 text-gray-900">
                         <h2 className="mb-4">Precio: ${product.price}</h2>
                     </span>
-                    <p className="leading-relaxed text-base text-grey-700">{product.stock}</p>
+                    <ItemCount stock={product.stock} initial={1}/>
             </div>
-            
         </div>
     );
 };
 
-export default Item ;
+export default ItemDetail ;
