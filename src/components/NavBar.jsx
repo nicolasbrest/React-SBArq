@@ -5,39 +5,41 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import CartWidget from './CartWidget';
+import imgLogo from '../assets/img/logosb.png';
+
 
 
 const NavBar = () => {
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="white" variant="light">
             <Container fluid>
-                <Navbar.Brand href="#">SB Arquitectas</Navbar.Brand>
+                <img width="5%" src={imgLogo} alt="logo tienda" className='d-inline-block align-top'/>{''}
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
-        <Nav
+            <Nav
                 className="me-auto my-2 my-lg-0"
                 style={{ maxHeight: '100px' }} navbarScroll>
                 
-                <Nav.Link href="#action1">Home</Nav.Link>
+                <Nav.Link href="/">Home</Nav.Link>
                 
-                <Nav.Link href="#action2">Nosotras</Nav.Link>
+                <Nav.Link href="/nosotras">Nosotras</Nav.Link>
             
-        <NavDropdown title="Productos" id="navbarScrollingDropdown">
-            <NavDropdown.Item href="#action3">Interior</NavDropdown.Item>
-            <NavDropdown.Item href="#action4">Exterior</NavDropdown.Item>
+                <NavDropdown title="Productos" id="navbarScrollingDropdown">
+                    <NavDropdown.Item href="/productosinterior">Interior</NavDropdown.Item>
+                    <NavDropdown.Item href="/productosexterior">Exterior</NavDropdown.Item>
             
             <NavDropdown.Divider />
             
-            <NavDropdown.Item href="#action5">Productos</NavDropdown.Item>
-        </NavDropdown>
+                    <NavDropdown.Item href="/productos">Productos</NavDropdown.Item>
+                </NavDropdown>
             
             <Nav.Link href="#" disabled>
                 Próximamente
             </Nav.Link>
         </Nav>
-
+        
         <CartWidget/>
-
+        
             <Form className="d-flex">
             <Form.Control
                 type="search"

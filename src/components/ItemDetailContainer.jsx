@@ -24,7 +24,7 @@ function ItemListContainer ({ id }) {
 
 
     return(
-        <section className="text-gray-600 body-font">
+        <section className="text-gray-600 body-font flex flex-col text-center w-full mb-12 container px-5 py-8 mx-auto">
                 <ItemDetail product={stateProduct}/>
         </section>
     )
