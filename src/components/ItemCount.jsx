@@ -16,13 +16,6 @@ function ItemCount (props) {
         if (count > 0) {setCount (prev => prev - 1)}
     };
 
-    const updateCountInput = (e) => {
-        const {value} = e.target;
-        if (value <= stock) {
-            setCount(isNaN(value) ? 0 : parseInt(value));
-        }
-    };
-
     return ( 
         <Card className="flex flex-col mx-auto" style={{ width: '30%' }}>
         <div className="container px-5 py-8 mx-auto">
@@ -31,37 +24,24 @@ function ItemCount (props) {
                 
                 <div>
                     <div>
-                        <input
-                            onChange={(e) => updateCountInput (e)}
-                            className="border-primary"
-                            placeholder=""
-                            value={count}
-                            type="number"
-                        />
-                    </div>
-
-                    <div>
                         <Button variant="secondary" size="sm" onClick={handleSubstract}> - </Button>
                         <span>      {count}      </span>
                         <Button variant="secondary" size="sm" onClick={handleAdd}> + </Button>
                     </div>
                 </div>
                 <div>
-                    <Button onClick={() => onAdd(count)} 
+                    <Button onClick={() => props.onAdd(count)} 
                     variant="success" 
                     size="lg"
                     disabled={count === "" || count === 0}
-
-                    >
-                    
-                    Añadir al carrito
-                    
+                    >Añadir al carrito
                     </Button>{''}
+
                 </div> 
             </div>           
         </div>
         </Card>
-    )
+    );
 }
 
 export default ItemCount;

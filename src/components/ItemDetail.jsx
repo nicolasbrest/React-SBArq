@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 const ItemDetail = ( {product} ) => {
     const [amount, setAmount] = useState (0);
-    const {title, price, stock, id,} = product;
+
     const navigate = useNavigate();
     const onAdd = (amount) => {
         setAmount (amount);
@@ -24,7 +24,7 @@ const ItemDetail = ( {product} ) => {
                     <Card.Text>Precio: $ {product.price} </Card.Text>  
                 </Card.Body>    
                 
-                {amount == 0 && <ItemCount stock={product.stock} initial={0} onAdd={onAdd} />}
+                {amount === 0 && <ItemCount stock={product.stock} initial={0} onAdd={onAdd} />}
                 
             </Card>
         </CardGroup>

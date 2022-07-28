@@ -1,32 +1,32 @@
 import React, { useEffect, useState } from "react";
-import productD from "../data/product";
 import ItemDetail from "./ItemDetail";
+import product from "../data/product";
+import { useParams } from "react-router-dom";
 
-function getPro(){
-
-    return new Promise ((resolve, reject) => {
-        setTimeout( () => {
-            resolve (productD);
-        }, 2000 );
-    });
-}
-
-function ItemListContainer ({ id }) {
-
+function ItemListContainer () {
     const [stateProduct, productSet] = useState ([]);
+
+    const { id } = useParams;
     
     useEffect( () => {
-        getPro().then(respuestaPromise => {
-            productSet(respuestaPromise[id]);
+        const getPro = new Promise ((resolve, reject)   => {
+            setTimeout( () => {
+                resolve (product);
+            }, 2000 );
+        });
+
+
+        getPro.then(respuestaPromise => {
+            const itemFound = respuestaPromise.filter ((element ) => element.id === id);
+            productSet(itemFound[0]);
         });
     }, []);
 
 
-
     return(
-        <section className="text-gray-600 body-font flex flex-col text-center w-full mb-12 container px-5 py-8 mx-auto">
-                <ItemDetail product={stateProduct}/>
-        </section>
+        <>
+            <ItemDetail product={stateProduct}/>
+        </>
     )
 }
 
