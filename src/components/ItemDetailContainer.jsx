@@ -20,7 +20,7 @@ function ItemListContainer () {
             const itemFound = respuestaPromise.filter ((element ) => element.id === id);
             productSet(itemFound[0]);
         });
-    }, []);
+    }, );
 
 
     return(

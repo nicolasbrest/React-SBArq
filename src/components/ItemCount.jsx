@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import Card from 'react-bootstrap/Card';
 import Button from "react-bootstrap/esm/Button";
 
-function ItemCount (props) {
-    const [count, setCount] = useState (props.initial);
-
+const ItemCount = ({ stock = 2, initial = 0, onAdd, itemproducto }) => {
+    const [count, setCount] = useState (initial);
+    
     function handleAdd (){
         //setCount(count + 1);
-        if (count < props.stock){
+        if (count < stock){
             setCount(prev => prev + 1)};
     }
 
@@ -17,10 +16,9 @@ function ItemCount (props) {
     };
 
     return ( 
-        <Card className="flex flex-col mx-auto" style={{ width: '30%' }}>
         <div className="container px-5 py-8 mx-auto">
             <div className="flex flex-col text-center w-full mb-1">
-                <h1 className="sm:text-3x1 text-2x1 font-lighter title-font mb"><p>{props.itemproducto}</p></h1>
+                <h1 className="sm:text-3x1 text-2x1 font-lighter title-font mb"><p>{itemproducto}</p></h1>
                 
                 <div>
                     <div>
@@ -30,17 +28,16 @@ function ItemCount (props) {
                     </div>
                 </div>
                 <div>
-                    <Button onClick={() => props.onAdd(count)} 
+                    <Button onClick={onAdd} 
                     variant="success" 
                     size="lg"
                     disabled={count === "" || count === 0}
                     >Añadir al carrito
-                    </Button>{''}
+                    </Button>
 
                 </div> 
             </div>           
         </div>
-        </Card>
     );
 }
 
