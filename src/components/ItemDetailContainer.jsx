@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 function ItemListContainer () {
     const [stateProduct, productSet] = useState ([]);
 
-    const { id } = useParams;
+    const { id } = useParams();
     
     useEffect( () => {
         const getPro = new Promise ((resolve, reject)   => {
@@ -17,7 +17,7 @@ function ItemListContainer () {
 
 
         getPro.then(respuestaPromise => {
-            const itemFound = respuestaPromise.filter ((element ) => element.id === id);
+            const itemFound = respuestaPromise.filter ((element ) => element.id == id);
             productSet(itemFound[0]);
         });
     }, );

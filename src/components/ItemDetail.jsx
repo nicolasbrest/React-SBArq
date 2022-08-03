@@ -8,12 +8,15 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const ItemDetail = ( {product} ) => {
     const [amount, setAmount] = useState (0);
+    const [count, setCount] = useState (0);
+        console.log(product);
     const {title, price, image, stock} = product;
     const navigate = useNavigate();
-    const onAdd = (amount) => {
-        setAmount(amount);
-        navigate("/cart");
+    const onAdd = (cantidad) => {
+        setAmount(cantidad);
+        /*navigate("/cart");*/
     };
+    console.log(amount);
 
     return (      
         <CardGroup>
@@ -24,8 +27,8 @@ const ItemDetail = ( {product} ) => {
                         <Card.Text>Precio: $ {price} </Card.Text>  
                     </Card.Body>    
                 <div>
-                {(amount) === 0 && <ItemCount stock={stock} initial={0} onAdd={onAdd} />}
-                <Link to="cart/"><button className='className= "variant="success" size="lg"'> Buy now! </button></Link>
+                {(amount) === 0 ? <ItemCount stock={stock} initial={0} onAdd={onAdd} count={count} setCount={setCount}/> : <h3> añadiste {amount} al carrito</h3>}
+                <Link to="cart/"><button className='variant-success size-lg'> Buy now! </button></Link>
                 </div>
                 
             </Card>

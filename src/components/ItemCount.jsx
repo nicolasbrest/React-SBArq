@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+
 import Button from "react-bootstrap/esm/Button";
 
-const ItemCount = ({ stock = 2, initial = 0, onAdd, itemproducto }) => {
-    const [count, setCount] = useState (initial);
+const ItemCount = ({ stock = 2, initial = 0, onAdd, itemproducto, count, setCount }) => {
     
     function handleAdd (){
         //setCount(count + 1);
@@ -28,13 +27,12 @@ const ItemCount = ({ stock = 2, initial = 0, onAdd, itemproducto }) => {
                     </div>
                 </div>
                 <div>
-                    <Button onClick={onAdd} 
+                    <Button onClick={() => onAdd (count)} 
                     variant="success" 
                     size="lg"
                     disabled={count === "" || count === 0}
                     >Añadir al carrito
                     </Button>
-
                 </div> 
             </div>           
         </div>
