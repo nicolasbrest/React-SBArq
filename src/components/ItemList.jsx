@@ -3,7 +3,7 @@ import Item from './Item';
 
 
 function ItemList( {product} ){
-    console.log ("render item list", product.items)
+    console.log ("render item list", product)
     return (
     <>
         {product.map(thisproduct => {
