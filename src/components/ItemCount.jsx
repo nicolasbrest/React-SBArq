@@ -1,18 +1,16 @@
-
 import Button from "react-bootstrap/esm/Button";
 
 const ItemCount = ({ stock = 2, initial = 0, onAdd, itemproducto, count, setCount }) => {
     
     function handleAdd (){
         //setCount(count + 1);
-        if (count < stock){
-            setCount(prev => prev + 1)};
+        if (count < stock) {setCount (prev => prev + 1) }
     }
 
     function handleSubstract (){
         //setCount(count - 1);
         if (count > 0) {setCount (prev => prev - 1)}
-    };
+    }
 
     return ( 
         <div className="container px-5 py-8 mx-auto">
@@ -27,12 +25,7 @@ const ItemCount = ({ stock = 2, initial = 0, onAdd, itemproducto, count, setCoun
                     </div>
                 </div>
                 <div>
-                    <Button onClick={() => onAdd (count)} 
-                    variant="success" 
-                    size="lg"
-                    disabled={count === "" || count === 0}
-                    >Añadir al carrito
-                    </Button>
+                    <Button onClick={() => onAdd (count)} variant="success" size="lg" disabled={count === "" || count === 0}> Añadir al carrito </Button>
                 </div> 
             </div>           
         </div>

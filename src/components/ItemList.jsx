@@ -1,9 +1,8 @@
 import React from 'react';
 import Item from './Item';
 
-
 function ItemList( {product} ){
-    console.log ("render item list", product)
+    console.log ("muestra itemList", product)
     return (
     <>
         {product.map(thisproduct => {

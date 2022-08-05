@@ -19,18 +19,19 @@ const ItemDetail = ( { product } ) => {
     console.log(addItem);
 
     return (      
-        <CardGroup>
-            <Card className='card' bg="light" style={{ width: '20rem' }}>
-                <Card.Img className='card-img-top' width="10%" src={image} alt={title}/>
-                    <Card.Body className='d-flex flex-column justify-content-center'>
+        <CardGroup style={{ width: '30rem' }} >
+            <Card border="info" bg="light" >
+                <Card.Img variant="top" src={image}  alt={title}/>
+                    <Card.Body>
                         <Card.Title>{title}</Card.Title>
                         <Card.Text>Precio: $ {price} </Card.Text>  
                     </Card.Body>    
-                <div>
-                {(amount) === 0 ? <ItemCount stock={stock} initial={0} onAdd={onAdd} count={count} setCount={setCount}/> : <h3> añadiste {amount} al carrito</h3>}
-                <Link to="cart/"><button className='variant-success size-lg'> Ir al carrito </button></Link>
-                </div>
-                
+                <Card.Footer>
+                    <div className="d-flex">
+                    {(amount) === 0 ? <ItemCount stock={stock} initial={0} onAdd={onAdd} count={count} setCount={setCount}/> : <h3> añadiste {amount} al carrito</h3>}
+                    <Link to="/cart"><button className='btn btn-primary'> Ir al carrito </button></Link>
+                    </div>
+                </Card.Footer>
             </Card>
         </CardGroup>
     );
