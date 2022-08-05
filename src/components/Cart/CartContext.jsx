@@ -28,7 +28,7 @@ const CartContext = ( {children} ) => {
         setItemCarrito(itemCarrito.filter ((element) => element.product.id != itemId));
     };
 
-    return <CContext.Provider value={{ itemCarrito, addItem }}>{children}</CContext.Provider>;
+    return <CContext.Provider value={{ itemCarrito, addItem, removeItemClear, clear }}>{children}</CContext.Provider>;
 };
 
 
