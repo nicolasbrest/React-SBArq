@@ -36,8 +36,6 @@ const NavBar = () => {
             </Nav.Link>
         </Nav>
         
-        <CartWidget/>
-        
             <Form className="d-flex">
             <Form.Control
                 type="search"
@@ -49,6 +47,7 @@ const NavBar = () => {
             <Button variant="outline-success">Buscar</Button>
         </Form>
         </Navbar.Collapse>
+        <CartWidget/>
     </Container>
     </Navbar>
 );

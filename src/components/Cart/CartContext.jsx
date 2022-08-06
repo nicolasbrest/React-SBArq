@@ -25,10 +25,17 @@ const CartContext = ( {children} ) => {
     };
 
     const removeItemClear = (itemId) => {
-        setItemCarrito(itemCarrito.filter ((element) => element.product.id != itemId));
+        setItemCarrito(itemCarrito.filter ((element) => element.product.id !== itemId));
     };
 
-    return <CContext.Provider value={{ itemCarrito, addItem, removeItemClear, clear }}>{children}</CContext.Provider>;
+    const total = () => {
+        return itemCarrito.reduce (
+            (valorAnterior, valorActual) => valorAnterior + valorActual.product.price * valorActual.cantidad, 
+            0
+        );
+    };
+
+    return <CContext.Provider value={{ itemCarrito, addItem, removeItemClear, clear, total  }}>{children}</CContext.Provider>;
 };
 
 

@@ -1,22 +1,27 @@
-import Stack from 'react-bootstrap/Stack';
+import React, {useContext} from "react";
+import { CContext } from "./CartContext";
 import { Link } from 'react-router-dom';
+import shoppingBag from "../../assets/img/shoppingbag.png";
 
-const CartWidget = () => {
-    const amount = 2;
+const CartWidget = (itemCarrito, cantidad) => {
+    /*const { itemCarrito } = useContext (CContext);*/
 
     return ( 
         <>  
-            <button type="button" className="btn btn-secondary position-relative">
-            <Link to="/cart">
-            <img style={{ width: 30}} src="https://cdn-icons-png.flaticon.com/512/107/107831.png" alt="" />
-                <span className="position-absolute top-0 start-75 translate-middle badge rounded-pill bg-danger">5
-                <span className="visually-hidden">productos cargados</span>
-                </span>
-                </Link>
-            </button>
-            
+            {itemCarrito.length === 0 ? ( 
+            <> </> 
+            ) : (
+                <>
+                    <button type="button" className="btn position-relative">
+                        <Link to="/cart">
+                            <img style={{ width: 30}} src={shoppingBag} alt="carritonull" />
+                            <span className="position-absolute top-0 start-75 translate-middle badge rounded-pill bg-danger">cantidad</span>
+                        </Link>
+                    </button>
+                </>
+            )}
         </>
     );
-}
+};
 
 export default CartWidget;
