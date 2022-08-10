@@ -5,12 +5,29 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap';
+import { StrictMode } from 'react';
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBGNsJcf6XgeKd-N6LLzn5oeWjomlTrp8M",
+  authDomain: "sb-arqs.firebaseapp.com",
+  projectId: "sb-arqs",
+  storageBucket: "sb-arqs.appspot.com",
+  messagingSenderId: "47344227216",
+  appId: "1:47344227216:web:2db8eb16ef0cfc1d6ad915",
+  measurementId: "G-9FX882GXK4"
+};
+
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <StrictMode>
     <App />
-  </React.StrictMode>
+  </StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
