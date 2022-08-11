@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import productD from "../data/product";
 import ItemList from "./ItemList";
+import { getDoc, doc, getFirestore} from "firebase/firestore";
 
 
 function getProducts(){
@@ -16,7 +17,14 @@ function ItemListContainer ({ titulo }) {
 
     const [productState, setProduct] = useState ([]);
     
-    useEffect( () => {
+    useEffect(() => {
+
+        const db = getFirestore();
+        const docRef = doc (db, "items", "iM8sWGWtfpXrMW2iQykO");
+        getDoc(docRef).then((snapshot) => { 
+            const productD = { id: snapshot.id, ...snapshot.productD()};
+        });
+
         getProducts().then(respuestaPromise =>{
             setProduct(respuestaPromise);
         });

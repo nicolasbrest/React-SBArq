@@ -17,7 +17,7 @@ const product = [
     "id": 3,
     "title": "Frasco Hermetico",
     "image": "https://i.postimg.cc/wtnZTSpk/frasco-hermetico.jpg",
-    "price": "2000",
+    "price": 2000,
     "stock": 5,
     "info": "esto es una descripción de producto"
     }, {
