@@ -14,15 +14,17 @@ function getProducts(){
 }
 
 function ItemListContainer ({ titulo }) {
-
+    const [loading, setLoading] = useState (false);
     const [productState, setProduct] = useState ([]);
     
     useEffect(() => {
-
+        setLoading(true);
         const db = getFirestore();
-        const docRef = doc (db, "items", "iM8sWGWtfpXrMW2iQykO");
-        getDoc(docRef).then((snapshot) => { 
-            const productD = { id: snapshot.id, ...snapshot.productD()};
+        const itemsCollection = collection (db, "items");
+        const itemsDocuments = getDoc(itemsCollection).then((snapshot) => { 
+            const productD = snapshot.docs.map ((doc) => ({ id: doc.id, ...doc.productD() } ))
+            console.log(productD);
+            setLoading(false);
         });
 
         getProducts().then(respuestaPromise =>{
