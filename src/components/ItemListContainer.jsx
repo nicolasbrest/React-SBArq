@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import productD from "../data/product";
 import ItemList from "./ItemList";
-import { getDoc, doc, getFirestore} from "firebase/firestore";
+import { getDocs, doc, getFirestore, collection} from 'firebase/firestore';
+import { useParams } from "react-router-dom";
 
 
 function getProducts(){
@@ -14,14 +15,19 @@ function getProducts(){
 }
 
 function ItemListContainer ({ titulo }) {
+    const { name } = useParams();
     const [loading, setLoading] = useState (false);
     const [productState, setProduct] = useState ([]);
+    const promise = new Promise ((resolve ) => {
+        setTimeout( () => {
+            resolve (productD) }, 100 );
+    });
     
     useEffect(() => {
         setLoading(true);
         const db = getFirestore();
-        const itemsCollection = collection (db, "items");
-        const itemsDocuments = getDoc(itemsCollection).then((snapshot) => { 
+        const itemsCollection = collection(db, "items");
+        const itemsDocuments = getDocs(itemsCollection).then((snapshot) => { 
             const productD = snapshot.docs.map ((doc) => ({ id: doc.id, ...doc.productD() } ))
             console.log(productD);
             setLoading(false);
